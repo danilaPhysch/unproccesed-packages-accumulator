@@ -1,0 +1,19 @@
+syntax = "proto3";
+option csharp_namespace = "UnprocessedPackages";
+package unprocessed_packages;
+
+import "google/protobuf/empty.proto";
+
+service UnprocessedPackagesSender {
+  rpc GetFgbUnprocessedPackages (google.protobuf.Empty) returns (stream UnprocessedFgbPackage);
+  rpc GetSgbUnprocessedPackages (google.protobuf.Empty) returns (stream UnprocessedSgbPackage);
+}
+
+message UnprocessedFgbPackage {
+  string message = 1;
+  int32 bch_error = 2;
+}
+message UnprocessedSgbPackage {
+  string message = 1;
+  int32 bch_error = 2;
+}
